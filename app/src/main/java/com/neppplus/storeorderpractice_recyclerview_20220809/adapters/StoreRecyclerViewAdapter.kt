@@ -1,6 +1,7 @@
 package com.neppplus.storeorderpractice_recyclerview_20220809.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.neppplus.storeorderpractice_recyclerview_20220809.DetailStoreActivity
 import com.neppplus.storeorderpractice_recyclerview_20220809.R
 import com.neppplus.storeorderpractice_recyclerview_20220809.datas.StoreData
 import com.willy.ratingbar.ScaleRatingBar
@@ -30,6 +32,12 @@ class StoreRecyclerViewAdapter(
                 .load(item.imageUri)
                 .into(storeImg)
             scoreRatingBar.rating = item.score.toFloat()
+
+            itemView.setOnClickListener {
+                val myIntent = Intent(mContext, DetailStoreActivity::class.java)
+                myIntent.putExtra("storeData", item)
+                mContext.startActivity(myIntent)
+            }
         }
     }
 
