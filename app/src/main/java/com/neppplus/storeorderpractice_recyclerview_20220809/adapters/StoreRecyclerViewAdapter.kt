@@ -39,7 +39,6 @@ class StoreRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d("size", mList.size.toString())
         holder.bind(mList[position])
     }
 
