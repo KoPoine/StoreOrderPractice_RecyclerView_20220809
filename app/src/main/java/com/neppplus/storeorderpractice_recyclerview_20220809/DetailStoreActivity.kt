@@ -1,5 +1,7 @@
 package com.neppplus.storeorderpractice_recyclerview_20220809
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
@@ -19,7 +21,17 @@ class DetailStoreActivity : BaseActivity() {
     }
 
     override fun setupEvent() {
+        binding.callBtn.setOnClickListener {
+            val myUri = Uri.parse("tel:${storeData.phoneNum}")
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+            startActivity(myIntent)
+        }
 
+        binding.visitBtn.setOnClickListener {
+            val myUri = Uri.parse("${storeData.siteUrl}")
+            val myIntent = Intent(Intent.ACTION_VIEW, myUri)
+            startActivity(myIntent)
+        }
     }
 
     override fun setValues() {
