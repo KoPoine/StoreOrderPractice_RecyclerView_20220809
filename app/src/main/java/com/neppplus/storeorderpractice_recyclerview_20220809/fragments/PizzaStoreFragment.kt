@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.neppplus.storeorderpractice_recyclerview_20220809.R
+import com.neppplus.storeorderpractice_recyclerview_20220809.adapters.StoreRecyclerViewAdapter
 import com.neppplus.storeorderpractice_recyclerview_20220809.databinding.FragmentPizzaStoreBinding
 import com.neppplus.storeorderpractice_recyclerview_20220809.datas.StoreData
 
@@ -14,6 +16,8 @@ class PizzaStoreFragment : BaseFragment() {
     lateinit var binding : FragmentPizzaStoreBinding
 
     val mList = ArrayList<StoreData>()
+
+    lateinit var mStoreAdapter : StoreRecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,5 +44,10 @@ class PizzaStoreFragment : BaseFragment() {
             "https://www.pngplay.com/wp-content/uploads/6/Dominos-Pizza-Logo-Background-PNG-Image.png", "1577-3082"))
         mList.add(StoreData("미스터피자", 3.0,
             "https://mblogthumb-phinf.pstatic.net/20160530_62/ppanppane_14646177047843NP3E_PNG/%B9%CC%BD%BA%C5%CD%C7%C7%C0%DA_%B7%CE%B0%ED_%283%29.png?type=w800", "1577-0077"))
+
+        mStoreAdapter = StoreRecyclerViewAdapter(mContext, mList)
+        binding.storeRecyclerView.adapter = mStoreAdapter
+        binding.storeRecyclerView.layoutManager = LinearLayoutManager(mContext)
+
     }
 }
